@@ -1,39 +1,66 @@
 body {
   margin: 0;
+  font-family: system-ui;
+}
+
+.background {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+p {
+  padding: 30px 0px;
+  font-size: 30px;
+  text-align: center;
+  line-height: 50px;
 }
 
 .main-container {
-  background-image: url('./pictures/background.png');
-  background-size: 100vw;
-  background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
   margin: 0;
-  padding: 10vh;
-  display: block;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
+  gap: 15px;
 }
 
 .main-window {
   max-height: 720px;
   overflow: hidden;
-  background-color: #d3d3d3;
+  background-color: #fdfbfb;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 10px 8px 5px rgb(153, 153, 153);
 }
 
 .arrow {
   margin: auto 40px;
 }
 
+.arrow .cls-1:hover {
+  fill: #979797;
+}
+
 svg.left {
-  flex: 1 1 200px;
-  max-width: 200px;
+  max-width: 100px;
 }
 
 svg.right {
-  flex: 1 1 200px;
   max-width: 200px;
   transform: rotate(180deg);
 }
@@ -43,3 +70,17 @@ svg.right {
   max-width: 1280px;
 }
 
+.thumbnail {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.selected {
+  border: 8px solid rgb(255, 255, 255);
+  transform: scale(1.5);
+}
+
+.thumbnail img {
+  box-shadow: 10px 5px 5px rgb(46, 46, 46);
+}
