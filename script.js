@@ -90,7 +90,6 @@ function setZoomedImage(index = 0) {
   zoomedImage.title = photos[index].title;
   zoomedImage.src = photos[index].src;
   mainWindow.insertBefore(zoomedImage, arrows[1]);
-  
   return index;
 }
 
@@ -113,6 +112,24 @@ function move(zoomedImageNumber, direction) {
   return zoomedImageNumber;
 }
 
+function popOutInfo(image, event) {
+  let info = document.createElement('div');
+  info.classList.add('pop-info');
+  info.style.top = (Math.round(image.getBoundingClientRect().top) - 60) + 'px';
+  info.style.left = (Math.round(image.getBoundingClientRect().left) - (image.title.length - 4) * 5) + 'px';
+  body.appendChild(info);
+  let titleParag = document.createElement('p');
+  titleParag.textContent = image.title;
+  info.appendChild(titleParag);
+}
+
+function popInInfo() {
+  let toRemove = document.querySelectorAll('.pop-info');
+  for (let i = 0; i < toRemove.length; i++) {
+    toRemove[i].remove();
+  }
+}
+
 arrows.forEach(function(arrow) {
   arrow.addEventListener('click', function() {
     if (this.classList.contains('right')) {
@@ -127,7 +144,14 @@ thumbnailImages.forEach(function(image, key) {
   image.addEventListener('click', function() {
     zoomedImageNumber = move(key, 'this')
   })
+  image.addEventListener('mouseover', function(event) {
+    popOutInfo(image, event);
+  })
+  image.addEventListener('mouseout', function(event) {
+    popInInfo();
+  })
 });
+
 
 function onKeyPress(event) {
   switch (event.keyCode) {
@@ -142,6 +166,7 @@ function onKeyPress(event) {
   }
 }
 document.body.addEventListener('keydown', onKeyPress);
+
 
 
 
