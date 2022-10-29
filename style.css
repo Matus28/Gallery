@@ -14,9 +14,7 @@ body {
   z-index: -1;
 }
 
-h1 {
-  font-size: 60px;
-}
+
 
 p {
   padding: 30px 0px;
@@ -99,6 +97,7 @@ svg.right {
 }
 
 .pop-info p {
+  font-size: 25px;
   display: inline;
   margin: 0;
   padding: 0;
@@ -115,7 +114,10 @@ svg.right {
 }
 
 .center-image .description {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   box-sizing: border-box;
   margin: 0;
   padding: 20px 10px 0;
@@ -128,11 +130,17 @@ svg.right {
 }
 
 .center-image h1 {
-  position: absolute;
+  font-size: 40px;
   margin: 0;
   padding: 0;
   display: inline;
-  top: 0;
-  left: 0;
+  color: rgb(194, 194, 194);
+}
+
+.center-image p {
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+  display: inline;
   color: rgb(194, 194, 194);
 }

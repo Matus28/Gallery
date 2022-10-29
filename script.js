@@ -13,11 +13,6 @@ const titleContainerParagraph = document.createElement('p');
 const containerZoomedImage = document.querySelector('.center-image');
 const thumbnail = document.querySelector('.thumbnail');
 const paragraph = document.querySelector('p');
-const header = document.querySelector('header')
-const head1 = document.createElement('h1');
-header.appendChild(head1);
-
-
 
 const photos = [
   {
@@ -83,7 +78,7 @@ function setThumbnail(zoomedIMG) {
         minImage.classList.remove('selected');
         minImage.classList.add('not-selected');
       }
-      minImage.style.width = '5%'
+      minImage.style.width = '100px'
       thumbnail.appendChild(minImage);
     }
   }
@@ -91,8 +86,6 @@ function setThumbnail(zoomedIMG) {
 }
 
 function setZoomedImage(index = 0) {
-  head1.textContent = photos[index].title;
-  paragraph.innerHTML = `${index + 1}/${photos.length} <br> ${photos[index].description}`;
   zoomedImage.alt = photos[index].description;
   zoomedImage.title = photos[index].title;
   zoomedImage.src = photos[index].src;
@@ -101,7 +94,9 @@ function setZoomedImage(index = 0) {
   containerZoomedImage.appendChild(titleContainer);
   titleContainerHeader.textContent = photos[index].title;
   titleContainer.appendChild(titleContainerHeader);
-
+  titleContainerParagraph.innerHTML = `${photos[index].description}`;
+  titleContainer.appendChild(titleContainerParagraph);
+  paragraph.innerHTML = `${index + 1}/${photos.length}`;
   // mainWindow.insertBefore(zoomedImage, arrows[1]);
   return index;
 }
@@ -129,7 +124,7 @@ function popOutInfo(image, event) {
   let info = document.createElement('div');
   info.classList.add('pop-info');
   info.style.top = (Math.round(image.getBoundingClientRect().top) - 60) + 'px';
-  info.style.left = (Math.round(image.getBoundingClientRect().left) - (image.title.length - 4) * 5) + 'px';
+  info.style.left = (Math.round(image.getBoundingClientRect().left) - (image.title.length - 13) * 5) + 'px';
   body.appendChild(info);
   let titleParag = document.createElement('p');
   titleParag.textContent = image.title;
