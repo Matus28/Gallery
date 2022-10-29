@@ -76,6 +76,10 @@ svg.right {
   gap: 50px;
 }
 
+.thumbnail img.not-selected:hover {
+  transform: scale(1.4);
+}
+
 .selected {
   border: 8px solid rgb(255, 255, 255);
   transform: scale(1.5);
@@ -98,3 +102,15 @@ svg.right {
   padding: 0;
   color:rgb(255, 255, 255);
 }
+
+.center-image {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.center-image img {
+  
+}
+

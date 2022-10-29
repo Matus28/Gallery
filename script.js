@@ -7,6 +7,7 @@ const body = document.querySelector('body');
 const mainWindow = document.querySelector('.main-window');
 const arrows = mainWindow.querySelectorAll('svg');
 const zoomedImage = document.createElement('img');
+const containerZoodemImage = document.querySelector('.center-image');
 const thumbnail = document.querySelector('.thumbnail');
 const paragraph = document.querySelector('p');
 const header = document.querySelector('header')
@@ -59,10 +60,11 @@ function setThumbnail(zoomedIMG) {
       if (i === zoomedIMG) {
         photos[i].zoomed = true;
         thumbnailImages[i].classList.add('selected');
+        thumbnailImages[i].classList.remove('not-selected');
       } else {
         photos[i].zoomed = false;
-        console.log(thumbnailImages);
-        thumbnailImages[i].setAttribute('class','');
+        thumbnailImages[i].classList.add('not-selected');
+        thumbnailImages[i].classList.remove('selected');
       }
     } else {
       let minImage = document.createElement('img');
@@ -72,9 +74,11 @@ function setThumbnail(zoomedIMG) {
       if (i === zoomedIMG) {
         photos[i].zoomed = true;
         minImage.classList.add('selected');
+        minImage.classList.remove('not-selected');
       } else {
         photos[i].zoomed = false;
         minImage.classList.remove('selected');
+        minImage.classList.add('not-selected');
       }
       minImage.style.width = '5%'
       thumbnail.appendChild(minImage);
@@ -89,7 +93,8 @@ function setZoomedImage(index = 0) {
   zoomedImage.alt = photos[index].description;
   zoomedImage.title = photos[index].title;
   zoomedImage.src = photos[index].src;
-  mainWindow.insertBefore(zoomedImage, arrows[1]);
+  containerZoodemImage.appendChild(zoomedImage);
+  // mainWindow.insertBefore(zoomedImage, arrows[1]);
   return index;
 }
 
@@ -123,7 +128,7 @@ function popOutInfo(image, event) {
   info.appendChild(titleParag);
 }
 
-function popInInfo() {
+function popInInfo(image) {
   let toRemove = document.querySelectorAll('.pop-info');
   for (let i = 0; i < toRemove.length; i++) {
     toRemove[i].remove();
@@ -148,10 +153,9 @@ thumbnailImages.forEach(function(image, key) {
     popOutInfo(image, event);
   })
   image.addEventListener('mouseout', function(event) {
-    popInInfo();
+    popInInfo(image);
   })
 });
-
 
 function onKeyPress(event) {
   switch (event.keyCode) {
