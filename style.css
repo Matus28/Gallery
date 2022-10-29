@@ -42,6 +42,7 @@ p {
   max-height: 720px;
   overflow: hidden;
   background-color: #fdfbfb;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,7 +68,8 @@ svg.right {
 
 .zoomed-photo {
   flex: 7 1 1280px;
-  max-width: 1280px;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .thumbnail {
@@ -108,9 +110,29 @@ svg.right {
   padding: 0;
   box-sizing: border-box;
   display: flex;
+  position: relative;
+  max-height: 100%;
 }
 
-.center-image img {
-  
+.center-image .description {
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px 10px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 30%;
+  width: 100%;
+  background-color: #000000a1;
 }
 
+.center-image h1 {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  display: inline;
+  top: 0;
+  left: 0;
+  color: rgb(194, 194, 194);
+}

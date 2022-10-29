@@ -7,7 +7,10 @@ const body = document.querySelector('body');
 const mainWindow = document.querySelector('.main-window');
 const arrows = mainWindow.querySelectorAll('svg');
 const zoomedImage = document.createElement('img');
-const containerZoodemImage = document.querySelector('.center-image');
+const titleContainer = document.createElement('div');
+const titleContainerHeader = document.createElement('h1');
+const titleContainerParagraph = document.createElement('p');
+const containerZoomedImage = document.querySelector('.center-image');
 const thumbnail = document.querySelector('.thumbnail');
 const paragraph = document.querySelector('p');
 const header = document.querySelector('header')
@@ -93,7 +96,12 @@ function setZoomedImage(index = 0) {
   zoomedImage.alt = photos[index].description;
   zoomedImage.title = photos[index].title;
   zoomedImage.src = photos[index].src;
-  containerZoodemImage.appendChild(zoomedImage);
+  containerZoomedImage.appendChild(zoomedImage);
+  titleContainer.classList.add('description');
+  containerZoomedImage.appendChild(titleContainer);
+  titleContainerHeader.textContent = photos[index].title;
+  titleContainer.appendChild(titleContainerHeader);
+
   // mainWindow.insertBefore(zoomedImage, arrows[1]);
   return index;
 }
