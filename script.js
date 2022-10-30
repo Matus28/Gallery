@@ -154,6 +154,14 @@ zoomedImage.onclick = (event) => {
   }
 }
 
+zoomFullScreenContainer.onclick = () => {
+  if (zoomedImage.classList.contains('fullscreen')) {
+    zoomedImage.setAttribute('class', 'no-fullscreen');
+    zoomFullScreenContainer.remove();
+    titleContainer.style.display = 'flex';
+  }
+}
+
 arrows.forEach(function(arrow) {
   arrow.addEventListener('click', function() {
     if (this.classList.contains('right')) {

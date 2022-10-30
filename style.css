@@ -70,7 +70,9 @@ svg.right {
 }
 
 .fullscreen {
-  /* display: block; */
+  position: relative;
+  top: 10vh;
+  left: 0vw;
   z-index: 3;
   transition-duration: 2s;
   transform: scale(1.5);
