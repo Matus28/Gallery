@@ -38,7 +38,7 @@ p {
 
 .main-window {
   max-height: 720px;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #fdfbfb;
   box-sizing: border-box;
   display: flex;
@@ -64,10 +64,17 @@ svg.right {
   transform: rotate(180deg);
 }
 
-.zoomed-photo {
-  flex: 7 1 1280px;
-  max-width: 100%;
-  max-height: 100%;
+.no-fullscreen{
+  transition-duration: 2s;
+  z-index: 1;
+}
+
+.fullscreen {
+  /* display: block; */
+  z-index: 3;
+  transition-duration: 2s;
+  transform: scale(1.5);
+
 }
 
 .thumbnail {
@@ -127,6 +134,7 @@ svg.right {
   height: 30%;
   width: 100%;
   background-color: #000000a1;
+  z-index: 2;
 }
 
 .center-image h1 {
@@ -135,6 +143,7 @@ svg.right {
   padding: 0;
   display: inline;
   color: rgb(194, 194, 194);
+  z-index: 2;
 }
 
 .center-image p {
@@ -143,4 +152,24 @@ svg.right {
   padding: 0;
   display: inline;
   color: rgb(194, 194, 194);
+  z-index: 2;
 }
+
+.fullscreen-container {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px 10px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000000bb;
+  z-index: 2;
+}
+/* 
+.fullscreen-container img {
+  position: center;
+  transform: scale(1.8);
+  transition-duration: 2s;
+} */

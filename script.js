@@ -4,6 +4,7 @@
 // -----------------------------Initialization------------------------------
 // -------------------------------------------------------------------------
 const body = document.querySelector('body');
+const mainContainer = document.querySelector('.main-container');
 const mainWindow = document.querySelector('.main-window');
 const arrows = mainWindow.querySelectorAll('svg');
 const zoomedImage = document.createElement('img');
@@ -13,6 +14,7 @@ const titleContainerParagraph = document.createElement('p');
 const containerZoomedImage = document.querySelector('.center-image');
 const thumbnail = document.querySelector('.thumbnail');
 const paragraph = document.querySelector('p');
+const zoomFullScreenContainer = document.createElement('div');
 
 const photos = [
   {
@@ -89,6 +91,7 @@ function setZoomedImage(index = 0) {
   zoomedImage.alt = photos[index].description;
   zoomedImage.title = photos[index].title;
   zoomedImage.src = photos[index].src;
+  zoomedImage.classList.add('no-fullscreen');
   containerZoomedImage.appendChild(zoomedImage);
   titleContainer.classList.add('description');
   containerZoomedImage.appendChild(titleContainer);
@@ -135,6 +138,19 @@ function popInInfo(image) {
   let toRemove = document.querySelectorAll('.pop-info');
   for (let i = 0; i < toRemove.length; i++) {
     toRemove[i].remove();
+  }
+}
+
+zoomedImage.onclick = (event) => {
+  if (zoomedImage.classList.contains('no-fullscreen')) {
+    zoomFullScreenContainer.classList.add('fullscreen-container');
+    mainContainer.appendChild(zoomFullScreenContainer);
+    titleContainer.style.display = 'none';
+    zoomedImage.setAttribute('class', 'fullscreen');
+  } else if (zoomedImage.classList.contains('fullscreen')) {
+    zoomedImage.setAttribute('class', 'no-fullscreen');
+    zoomFullScreenContainer.remove();
+    titleContainer.style.display = 'flex';
   }
 }
 
